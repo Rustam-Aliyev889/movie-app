@@ -1,15 +1,30 @@
-
-/* styles for small screens */
-.movie {
-  width: 100%;
-  max-width: 100%;
-  padding: 10px;
+* {
+  background-color:rgb(8, 8, 53);
+  color:rgb(240, 209, 172);
 }
-
+.movie {
+  margin: 20px;
+}
 .movies-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+img {
+  height: 355px;
+  max-width: 100%;
+}
+
+.title {
+  height: 8.5vh;
+}
+.movie-overview {
+  text-align: left;
+}
+
+.movie-content {
+  text-align: center;
 }
 
 /* styles for medium screens */
