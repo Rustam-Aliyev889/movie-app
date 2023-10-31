@@ -1,26 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { fetchMovies } from './api';
+import { fetchMovies, } from './api';
 import MoviesList from './MoviesList';
 import InfiniteScroll from 'react-infinite-scroll-component'; // Library 4 infinite scrolling
+import GenreFilter from './GenreFilter'; 
+
 function App() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [sortByRating, setSortByRating] = useState(false); // State for sorting
-
-  const fetchMoreData = () => {
-    // Function to load more movies
-    fetchMovies(page + 1).then((data) => {
-      setMovies([...movies, ...data]);
-      setPage(page + 1);
-    });
-  };
+  const [selectedGenres, setSelectedGenres] = useState([]);
 
   useEffect(() => {
-    fetchMovies().then((data) => {
+    fetchMovies(page, sortByRating, selectedGenres).then((data) => {
       setMovies(data);
     });
-  }, []);
+  }, [page, sortByRating, selectedGenres]);
+  
+  const fetchMoreData = () => {
+    setPage(page + 1);
+  };
 
   const toggleSort = () => {
     setSortByRating(!sortByRating);
@@ -34,14 +33,18 @@ function App() {
     setMovies(sortedMovies);
   };
 
+  const handleGenreFilterChange = (selectedGenres) => {
+    setSelectedGenres(selectedGenres);
+    setPage(1); // Resets the page to 1 when changing genres
+  };
+
   return (
     <div className="App">
-      <header className='header'>
-        <h1>Movie Database</h1>
-      </header>
+      <h1>Movie Database</h1>
       <button onClick={toggleSort}>
         {sortByRating ? 'Sort by Rating (High to Low)' : 'Sort by Rating (Low to High)'}
       </button>
+      <GenreFilter onFilterChange={handleGenreFilterChange} />
       <InfiniteScroll
         dataLength={movies.length} // To prevent infinite rendering
         next={fetchMoreData} // Function to load more data
@@ -55,5 +58,6 @@ function App() {
 }
 
 export default App;
+
 
 
