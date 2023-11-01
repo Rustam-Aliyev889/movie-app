@@ -17,8 +17,16 @@ function App() {
     });
   }, [page, sortByRating, selectedGenres]);
   
-  const fetchMoreData = () => {
-    setPage(page + 1);
+  const fetchMoreData = async () => {
+    try {
+      const newMovies = await fetchMovies(page, sortByRating, selectedGenres);
+      if (newMovies.length > 0) {
+        setMovies([...movies, ...newMovies]);
+        setPage(page + 1); // Increment the page number for the next request
+      }
+    } catch (error) {
+      console.error('Error fetching more data:', error);
+    }
   };
 
   const toggleSort = () => {

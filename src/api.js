@@ -8,11 +8,11 @@ const fetchMovies = async (page, sortByRating = false, selectedGenres = []) => {
       let apiUrl = `${BASE_URL}/discover/movie?api_key=${API_KEY}&language=en-US&page=${page}`;
       
       if (sortByRating) {
-        apiUrl += '&sort_by=vote_average.desc'; // Sort by rating in descending order
+        apiUrl += '&sort_by=vote_average.desc'; 
       }
       
       if (selectedGenres.length > 0) {
-        apiUrl += `&with_genres=${selectedGenres.join(',')}`; // Apply genre filtering
+        apiUrl += `&with_genres=${selectedGenres.join(',')}`; // genre filtering
       }
       
       const response = await axios.get(apiUrl);
