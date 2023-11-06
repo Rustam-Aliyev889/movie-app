@@ -4,18 +4,30 @@ import { fetchMovies, } from './api';
 import MoviesList from './MoviesList';
 import InfiniteScroll from 'react-infinite-scroll-component'; // Library 4 infinite scrolling
 import GenreFilter from './GenreFilter'; 
+import WatchLaterList from './WatchLaterList';
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [sortByRating, setSortByRating] = useState(false); // State for sorting
   const [selectedGenres, setSelectedGenres] = useState([]);
+  const [watchLaterList, setWatchLaterList] = useState([]);
+
 
   useEffect(() => {
     fetchMovies(page, sortByRating, selectedGenres).then((data) => {
       setMovies(data);
     });
   }, [page, sortByRating, selectedGenres]);
+
+  useEffect(() => {
+    //Use effect to load the watch later list from local storage
+    const storedList = localStorage.getItem('watchLaterList');
+    if (storedList) {
+      setWatchLaterList(JSON.parse(storedList));
+    }
+  }, []);
+  
   
   const fetchMoreData = async () => {
     try {
@@ -46,6 +58,26 @@ function App() {
     setPage(1); // Resets the page to 1 when changing genres
   };
 
+  const addToWatchLater = (movie) => {
+    if (!watchLaterList.some((item) => item.id === movie.id)) {
+      const updatedList = [...watchLaterList, { ...movie, posterUrl: `https://image.tmdb.org/t/p/w300${movie.poster_path}` }];
+      setWatchLaterList(updatedList);
+  
+      // To save the list to local storage
+      localStorage.setItem('watchLaterList', JSON.stringify(updatedList));
+    }
+  };
+  
+
+  const removeFromWatchLater = (movie) => {
+    const updatedWatchLaterList = watchLaterList.filter((item) => item.id !== movie.id);
+    setWatchLaterList(updatedWatchLaterList);
+  
+    //To update local storage with the updated list
+    localStorage.setItem('watchLaterList', JSON.stringify(updatedWatchLaterList));
+  };
+  
+
   return (
     <div className="App">
       <h1>Movie Database</h1>
@@ -53,13 +85,14 @@ function App() {
         {sortByRating ? 'Sort by Rating (High to Low)' : 'Sort by Rating (Low to High)'}
       </button>
       <GenreFilter onFilterChange={handleGenreFilterChange} />
+      <WatchLaterList watchLaterList={watchLaterList} onRemoveFromWatchLater={removeFromWatchLater} />
       <InfiniteScroll
         dataLength={movies.length} // To prevent infinite rendering
         next={fetchMoreData} // Function to load more data
         hasMore={true} // Indicates whether more data can be loaded
         loader={<h4>Loading...</h4>} // Loader component while loading
       >
-        <MoviesList movies={movies} />
+        <MoviesList movies={movies} onAddToWatchLater={addToWatchLater} />
       </InfiniteScroll>
     </div>
   );

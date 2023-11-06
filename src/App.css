@@ -1,9 +1,10 @@
 * {
-  background-color:rgb(8, 8, 53);
+  background-color:rgb(31, 8, 53);
   color:rgb(240, 209, 172);
 }
 .movie {
-  margin: 20px;
+  margin: 15px;
+  text-align: center;
 }
 .movies-list {
   display: flex;
@@ -15,6 +16,33 @@ img {
   height: 355px;
   max-width: 100%;
 }
+
+.movie-info {
+  position: relative;
+  width: 300px; /* Adjust the width as needed */
+}
+
+.hover-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin-left: 31px;
+  width: 76%; /* Make it the same width as the image */
+  height: 345px; /* Make it the same height as the image */
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  display: none;
+  text-align: center; /* Center the text horizontally */
+  vertical-align: middle; /* Center the text vertically */
+  line-height: 345px; /* Adjust the line-height to match the image height */
+}
+
+.movie-info:hover .hover-text {
+  display: block; /* Show text on hover */
+}
+
+
 
 .title {
   height: 8.5vh;
@@ -29,7 +57,7 @@ img {
 
 
 
-/* Add styling for the label container */
+
 .genre-list {
   display: flex;
   flex-wrap: wrap;
@@ -45,13 +73,13 @@ img {
 /* Style the checkbox label */
 .genre-list label {
   display: inline-block;
-  background-color: #98631e; /* Background color when unchecked */
+  background-color: #7c6508; /* Background color when unchecked */
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
 }
 
-/* Style the checkbox label when checked */
+/* checkbox label when checked */
 .genre-list label input[type="checkbox"]:checked + label {
   background-color: #007bff; /* Background color when checked */
   color: #fff;
