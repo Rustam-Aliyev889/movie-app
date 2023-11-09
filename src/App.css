@@ -76,10 +76,11 @@ img {
 
 .genre-list label {
   display: inline-block;
-  background-color: #7c6508; /* Background color when unchecked */
+  background-color:  #EB6841; /* Background color when unchecked */
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
+  font-weight: 500;
 }
 
 /* checkbox label when checked */
@@ -88,8 +89,45 @@ img {
   color: #fff;
 }
 
-/* Genres CSS end */
+.selected-genres {
+  display: flex;
+  flex-direction: row;
+}
 
+.selected-genres-title {
+  height: 2vh;
+  font-weight:600;
+  font-size: 22px;
+  padding: 2px;
+  text-align: center;
+}
+
+.genre-name {
+  margin-left: 2%;
+  font-size: 15px;
+  background-color: rgba(9, 193, 134, 0.8);
+  padding: 6px 9px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.genre-remove-btn {
+  width: 22px;
+  height: 22px;
+  margin-left: 5px;
+  text-align: center;
+  float: right;
+  border-radius: 50%;
+  background-color: rgba(9, 193, 134, 0.8);
+  border: none;
+}
+
+.genre-remove-btn:hover {
+  background-color: #ED2939;
+}
+
+/* Genres CSS end */
 
 /* Watch later list CSS */
 .movies-w-l-l {
@@ -142,20 +180,24 @@ img {
 
 .wll-button {
   border: solid 1px rgb(21, 20, 20);
-  border-radius: 11%;
+  border-radius: 50%;
   font-weight: 600;
-  background-color: #7c6508;
+  background-color: #EB6841;
   color: white;
-  width: 70px;
-  height: 30px;
+  width: 60px;
+  height: 60px;
   align-items: center;
   float: right;
   margin-right: 30px;
 }
 
+.wll-button:hover {
+  background-color: #E34A27;
+}
+
 
 .movie-item button {
-  background-color: rgba(9, 193, 134, 0.6);
+  background-color: rgba(9, 193, 134, 0.7);
   color: white;
   margin-top: 22px;
   margin-left: -29px;
@@ -167,11 +209,52 @@ img {
 }
 
 .movie-item button:hover {
-  background-color: red; /* Adjust the button's hover style */
+  background-color: #ED2939; /* Adjust the button's hover style */
 }
 
 /* Watch later list CSS end */
 
+.sort-btn {
+  color: #fff;
+  background-color:  #EB6841; /* Background color when unchecked */
+  padding: 8px 8px;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  float: right;
+  margin: 15px 15px;
+}
+
+/* Back to the top button */
+.scroll-to-top-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s;
+}
+
+.scroll-to-top-button.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top-button button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 20px 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  outline: none;
+}
+
+.scroll-to-top-button button:hover {
+  background-color: #0056b3;
+}
+/* Back to the top button end */
 
 /* styles for medium screens */
 @media screen and (min-width: 576px) {

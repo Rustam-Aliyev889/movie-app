@@ -27,7 +27,6 @@ const GenreFilter = ({ onFilterChange }) => {
 
   return (
     <div className="genre-filter">
-      <h2>Filter by Genre:</h2>
       <div className="genre-list">
         {genres.map((genre) => (
           <label key={genre.id} className={`genre-label${selectedGenres.includes(genre.id) ? ' checked' : ''}`}>
@@ -41,16 +40,14 @@ const GenreFilter = ({ onFilterChange }) => {
           </label>
         ))}
       </div>
+      <h3 className='selected-genres-title'>Selected Genres:</h3>
       <div className="selected-genres">
-        <h3>Selected Genres:</h3>
-        <div>
           {selectedGenres.map((genreId) => (
-            <p key={genreId}>
+            <p className='genre-name' key={genreId}>
               {genres.find((genre) => genre.id === genreId).name}
-              <button onClick={() => handleRemoveGenre(genreId)}>x</button>
+              <button className='genre-remove-btn' onClick={() => handleRemoveGenre(genreId)}>x</button>
             </p>
           ))}
-        </div>
       </div>
     </div>
   );

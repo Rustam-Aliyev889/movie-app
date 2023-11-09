@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { fetchMovies, } from './api';
-import MoviesList from './MoviesList';
+import { fetchMovies, } from './components/api';
+import MoviesList from './components/MoviesList';
 import InfiniteScroll from 'react-infinite-scroll-component'; // Library 4 infinite scrolling
-import GenreFilter from './GenreFilter'; 
-import WatchLaterList from './WatchLaterList';
+import GenreFilter from './components/GenreFilter'; 
+import WatchLaterList from './components/WatchLaterList';
+import ScrollToTopButton from './components/backToTheTop';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -81,11 +82,14 @@ function App() {
   return (
     <div className="App">
       <h1>Movie Database</h1>
-      <button onClick={toggleSort}>
-        {sortByRating ? 'Sort by Rating (High to Low)' : 'Sort by Rating (Low to High)'}
-      </button>
       <GenreFilter onFilterChange={handleGenreFilterChange} />
+      <button className='sort-btn' onClick={toggleSort}>
+      {sortByRating ? 'Sort by Rating (High to Low)' : 'Sort by Rating (Low to High)'}
+    </button>
       <WatchLaterList watchLaterList={watchLaterList} onRemoveFromWatchLater={removeFromWatchLater} />
+      <button className='sort-btn' onClick={toggleSort}>
+      {sortByRating ? 'Sort by Rating (High to Low)' : 'Sort by Rating (Low to High)'}
+          </button>
       <InfiniteScroll
         dataLength={movies.length} // To prevent infinite rendering
         next={fetchMoreData} // Function to load more data
@@ -93,6 +97,7 @@ function App() {
         loader={<h4>Loading...</h4>} // Loader component while loading
       >
         <MoviesList movies={movies} onAddToWatchLater={addToWatchLater} />
+        <ScrollToTopButton />
       </InfiniteScroll>
     </div>
   );
