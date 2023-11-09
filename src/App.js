@@ -83,13 +83,10 @@ function App() {
     <div className="App">
       <h1>Movie Database</h1>
       <GenreFilter onFilterChange={handleGenreFilterChange} />
-      <button className='sort-btn' onClick={toggleSort}>
-      {sortByRating ? 'Sort by Rating (High to Low)' : 'Sort by Rating (Low to High)'}
-    </button>
       <WatchLaterList watchLaterList={watchLaterList} onRemoveFromWatchLater={removeFromWatchLater} />
       <button className='sort-btn' onClick={toggleSort}>
       {sortByRating ? 'Sort by Rating (High to Low)' : 'Sort by Rating (Low to High)'}
-          </button>
+        </button>
       <InfiniteScroll
         dataLength={movies.length} // To prevent infinite rendering
         next={fetchMoreData} // Function to load more data
