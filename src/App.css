@@ -2,6 +2,9 @@
   background-color:rgb(31, 8, 53);
   color:rgb(240, 209, 172);
 }
+
+/* Main movie content CSS */
+
 .movie {
   margin: 15px;
   text-align: center;
@@ -19,7 +22,7 @@ img {
 
 .movie-info {
   position: relative;
-  width: 300px; /* Adjust the width as needed */
+  width: 300px; 
 }
 
 .hover-text {
@@ -27,22 +30,20 @@ img {
   top: 0;
   left: 0;
   margin-left: 31px;
-  width: 76%; /* Make it the same width as the image */
-  height: 345px; /* Make it the same height as the image */
+  width: 76%; 
+  height: 345px; 
   background-color: rgba(0, 0, 0, 0.7);
   color: white;
   padding: 5px;
   display: none;
-  text-align: center; /* Center the text horizontally */
-  vertical-align: middle; /* Center the text vertically */
-  line-height: 345px; /* Adjust the line-height to match the image height */
+  text-align: center; 
+  vertical-align: middle;
+  line-height: 345px;
 }
 
 .movie-info:hover .hover-text {
   display: block; /* Show text on hover */
 }
-
-
 
 .title {
   height: 8.5vh;
@@ -55,8 +56,10 @@ img {
   text-align: center;
 }
 
+/* Main movie content CSS end */
 
 
+/* Genres CSS */
 
 .genre-list {
   display: flex;
@@ -70,7 +73,7 @@ img {
   display: none; /* Hide the actual checkbox */
 }
 
-/* Style the checkbox label */
+
 .genre-list label {
   display: inline-block;
   background-color: #7c6508; /* Background color when unchecked */
@@ -85,7 +88,89 @@ img {
   color: #fff;
 }
 
+/* Genres CSS end */
 
+
+/* Watch later list CSS */
+.movies-w-l-l {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: 0;
+  background-color: #1f074c;
+}
+
+.movie-wl {
+  margin: 2px;
+  text-align: center;
+  flex: 1;
+  max-width: calc(20% - 20px);
+  position: relative;
+  background-color: #1f074c;
+  margin-bottom: 14px;
+}
+
+.movie-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 220px;
+  position: relative;
+  background-color: #1f074c;
+}
+
+.movie-item img {
+  max-width: 365px;
+  height: 32vh;
+  margin-top: 18px;
+}
+
+.wll-title {
+  height: 4vh;
+  font-size: 14px;
+  background-color: #1f074c;
+}
+
+.wll-name {
+  height: 4vh;
+  font-weight:600;
+  font-size: 22px;
+  padding: 2px;
+  margin-left: 12px;
+}
+
+.wll-button {
+  border: solid 1px rgb(21, 20, 20);
+  border-radius: 11%;
+  font-weight: 600;
+  background-color: #7c6508;
+  color: white;
+  width: 70px;
+  height: 30px;
+  align-items: center;
+  float: right;
+  margin-right: 30px;
+}
+
+
+.movie-item button {
+  background-color: rgba(9, 193, 134, 0.6);
+  color: white;
+  margin-top: 22px;
+  margin-left: -29px;
+  cursor: pointer;
+  height: 4vh;
+  width: 4vh;
+  border: 1px solid white;
+  border-radius: 50%;
+}
+
+.movie-item button:hover {
+  background-color: red; /* Adjust the button's hover style */
+}
+
+/* Watch later list CSS end */
 
 
 /* styles for medium screens */
@@ -95,6 +180,7 @@ img {
     max-width: 45%;
   }
 }
+
 
 /* styles for large screens */
 @media screen and (min-width: 992px) {

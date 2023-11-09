@@ -14,7 +14,6 @@ const MoviesList = ({ movies, onAddToWatchLater }) => {
             <div className="hover-text" onClick={() => onAddToWatchLater(movie)}>Click to add to watch later</div>
             <h3 className="title">{movie.title}</h3>
             <p className="movie-overview">{movie.overview}</p>
-            <button onClick={() => onAddToWatchLater(movie)}>Add to Watch Later</button>
           </div>
         </div>
       ))}
