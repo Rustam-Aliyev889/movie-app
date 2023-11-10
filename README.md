@@ -1,7 +1,9 @@
 
 # Cinema+
-[View the live project here.](https://rustam-aliyev889.github.io/movie-app/)
+
 Welcome to Cinema+, your ultimate movie companion! Explore a vast collection of movies with powerful features designed to enhance your movie-watching experience.
+
+[View the live project here.](https://rustam-aliyev889.github.io/movie-app/)
 
 <h2 align="center"><img src="./src/imgs/screen-s (2).png"></h2><br><br>
 <h2 align="center"><img src="./src/imgs/screen-s.png"></h2>
