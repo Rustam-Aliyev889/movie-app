@@ -36,7 +36,31 @@ const fetchMovies = async (page, sortByRating = false, selectedGenres = []) => {
       console.error('Error fetching genres:', error);
     }
   };
+
+  const searchMovies = async (query) => {
+    try {
+      const response = await axios.get(
+        `${BASE_URL}/search/movie?api_key=${API_KEY}&query=${query}`
+      );
+  
+      const searchResults = response.data.results;
+  
+      // formating the search results to match main page structure
+      const formattedResults = searchResults.map((result) => ({
+        id: result.id,
+        title: result.title,
+        overview: result.overview,
+        poster_path: result.poster_path,
+        vote_average: result.vote_average,
+      }));
+  
+      return formattedResults;
+    } catch (error) {
+      console.error('Something went wrong:', error);
+      return []; //Will return an empty array in case of an error
+    }
+  };
   
 
-export { fetchMovies, fetchGenres };
+export { fetchMovies, fetchGenres, searchMovies };
 

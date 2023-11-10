@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { fetchMovies, } from './components/api';
+import { fetchMovies, searchMovies } from './components/api';
 import MoviesList from './components/MoviesList';
 import InfiniteScroll from 'react-infinite-scroll-component'; // Library 4 infinite scrolling
 import GenreFilter from './components/GenreFilter'; 
 import WatchLaterList from './components/WatchLaterList';
 import ScrollToTopButton from './components/backToTheTop';
+import SearchBar from './components/SearchBar'; 
+import logo from './logo.png';
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -39,6 +41,16 @@ function App() {
       }
     } catch (error) {
       console.error('Error fetching more data:', error);
+    }
+  };
+
+  const handleSearch = async (query) => {
+    try {
+      const searchResults = await searchMovies(query);
+      setMovies(searchResults);
+      setPage(1);
+    } catch (error) {
+      console.error('Error searching for movies:', error);
     }
   };
 
@@ -81,7 +93,10 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Movie Database</h1>
+      <header className='header'>
+        <img className='logo' src={logo} alt='logo'/>
+        <SearchBar onSearch={handleSearch} />
+      </header>
       <GenreFilter onFilterChange={handleGenreFilterChange} />
       <WatchLaterList watchLaterList={watchLaterList} onRemoveFromWatchLater={removeFromWatchLater} />
       <button className='sort-btn' onClick={toggleSort}>

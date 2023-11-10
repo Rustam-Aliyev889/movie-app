@@ -3,6 +3,45 @@
   color:rgb(240, 209, 172);
 }
 
+/* header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1rem;
+}
+
+.logo {
+  width: 180px;
+  height: 100px;
+}
+
+.search-bar {
+  border: 2px solid #EB6841;
+  padding: 5px 10px;
+  border-radius: 25px;
+  color: white;
+  background-color: #fff;
+}
+
+.search-btn {
+  background-color: #EB6841;
+  color:  white;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 25px;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.search-btn:hover {
+  background-color: #E34A27;
+}
+
+/* header end */
+
 /* Main movie content CSS */
 
 .movie {
