@@ -1,5 +1,15 @@
 import React, { useState } from 'react';
 
+const WatchLaterListItem = ({ movie, onRemoveFromWatchLater }) => (
+  <div className='movie-wl' key={movie.id}>
+    <div className="movie-item">
+      <img src={movie.posterUrl} alt={movie.title} />
+      <button onClick={() => onRemoveFromWatchLater(movie)}>X</button>
+    </div>
+    <p className='wll-title'>{movie.title}</p>
+  </div>
+);
+
 const WatchLaterList = ({ watchLaterList, onRemoveFromWatchLater }) => {
   const [isCollapsed, setIsCollapsed] = useState(true);
 
@@ -12,29 +22,15 @@ const WatchLaterList = ({ watchLaterList, onRemoveFromWatchLater }) => {
       <h2 className='wll-name'>
         Watch Later
       </h2>
-      <div className={`movies-w-l-l ${isCollapsed ? 'collapsed' : ''}`}>
-        {isCollapsed
-          ? watchLaterList.slice(0, 5).map((movie) => (
-            <div className='movie-wl' key={movie.id}>
-            <div className="movie-item">
-              <img src={movie.posterUrl} alt={movie.title} />
-              <button onClick={() => onRemoveFromWatchLater(movie)}>X</button>
-            </div>
-            <p className='wll-title'>{movie.title}</p>
-          </div>
-            ))
-          : watchLaterList.map((movie) => (
-            <div className='movie-wl' key={movie.id}>
-            <div className="movie-item">
-              <img src={movie.posterUrl} alt={movie.title} />
-              <button onClick={() => onRemoveFromWatchLater(movie)}>X</button>
-            </div>
-            <p className='wll-title'>{movie.title}</p>
-          </div>
-            ))}
-            <button className='wll-button' onClick={toggleCollapse}>
-          {isCollapsed ? 'Show' : 'Hide'}
-        </button>
+      <div className="movies-w-l-l">
+        {watchLaterList.slice(0, isCollapsed ? 5 : undefined).map((movie) => (
+          <WatchLaterListItem key={movie.id} movie={movie} onRemoveFromWatchLater={onRemoveFromWatchLater} />
+        ))}
+        {watchLaterList.length > 5 && (
+          <button className='wll-button' onClick={toggleCollapse}>
+            {isCollapsed ? 'Show' : 'Hide'}
+          </button>
+        )}
       </div>
     </div>
   );
