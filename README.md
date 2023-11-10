@@ -3,6 +3,9 @@
 
 Welcome to Cinema+, your ultimate movie companion! Explore a vast collection of movies with powerful features designed to enhance your movie-watching experience.
 
+<h2 align="center"><img src="./src/imgs/screen-s.png"></h2><br><br>
+<h2 align="center"><img src="./src/imgs/screen-s(2).png"></h2>
+
 ## Features:
 
 ### 1. Infinite Scrolling
