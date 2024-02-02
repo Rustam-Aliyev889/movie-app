@@ -5,8 +5,7 @@ Welcome to Cinema+, your ultimate movie companion! Explore a vast collection of 
 
 [View the live project here.](https://rustam-aliyev889.github.io/movie-app/)
 
-<h2 align="center"><img src="./src/imgs/screen-s (2).png"></h2><br><br>
-<h2 align="center"><img src="./src/imgs/screen-s.png"></h2>
+<h2 align="center"><img src="./src/imgs/scr1.jpeg"></h2><br><br>
 
 ## Features:
 
